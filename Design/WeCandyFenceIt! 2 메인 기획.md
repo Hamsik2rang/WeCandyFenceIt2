@@ -202,7 +202,7 @@
 *   등장 확률은 다음과 같습니다
     
 
-![](./image/Main_MathExp_00.png)
+![](./image/Main_MathExp_00.PNG)
 
 ##### 3.1.1.2 점수
 
@@ -221,7 +221,7 @@
 *   등장 확률은 다음과 같습니다.
 
 
-![](./image/Main_MathExp_01.png)
+![](./image/Main_MathExp_01.PNG)
 
 ##### 3.1.2.2. 점수
 
@@ -240,7 +240,7 @@
 *   등장 확률은 다음과 같습니다.
 
 
-![](./image/Main_MathExp_02.png)
+![](./image/Main_MathExp_02.PNG)
 
 ##### 3.1.3.2. 점수
 
@@ -259,7 +259,7 @@
 *   등장 확률은 다음과 같습니다.
 
 
-![](./image/Main_MathExp_03.png)
+![](./image/Main_MathExp_03.PNG)
 
 
 
@@ -281,7 +281,7 @@
 *   등장 확률은 다음과 같습니다.
 
 
-![](./image/Main_MathExp_04.png)
+![](./image/Main_MathExp_04.PNG)
 
 ##### 3.1.5.2 점수
 
@@ -308,7 +308,7 @@
 
 *   미사일의 생성 위치는 랜덤한 화면 가장자리이며, 생성 주기는 다음 공식을 따릅니다.
 
-    ![](./image/Main_MathExp_05.png)
+    ![](./image/Main_MathExp_05.PNG)
 
 >예를 들어, 1단계의 경우 미사일이 생성되지 않으며,
 >
