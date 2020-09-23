@@ -35,19 +35,19 @@
 
 **ref 01. 단엽 프롭기 - 한 쌍의 날개 + 전면 프로펠러**
 
-![](./image/Bomber_Ref_00.jpg)
+![](../image/Bomber_Ref_00.jpg)
 
 
 
 **ref 02. 리소스 비율**
 
-![](./image/Bomber_Ref_01.png)
+![](../image/Bomber_Ref_01.png)
 
 동체의 길이가 x일 때 날개를 포함한 너비 역시 x가 되도록 제작합니다.
 
 **ref 03. 리소스 색상**
 
-![](./image/Bomber_Ref_02.png)
+![](../image/Bomber_Ref_02.png)
 
 꼭 이렇게 칠할 필요 없이 다양한 파스텔 색의 스트라이프 패턴으로 디자인합니다.
 
