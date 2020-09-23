@@ -201,10 +201,8 @@
 
 *   등장 확률은 다음과 같습니다
     
-    **P = F(n) / (sigma) i = 1 to n F(i) (단, n = 단계, F(n) = Fibonacci(n))**
-    $$
-    P = F(n) / \sum\limits_{i=1}^nF(i) \quad(단, n = 단계, F(n) = Fibonacci(n))
-    $$
+
+![](./image/Main_MathExp_00.png)
 
 ##### 3.1.1.2 점수
 
@@ -222,11 +220,8 @@
 
 *   등장 확률은 다음과 같습니다.
 
-    **P = F(n-1) / (sigma) i = 1 to n F(i) (단, n = 단계, F(n) = Fibonacci(n))**
 
-$$
-P = F(n-1) / \sum\limits_{i=1}^nF(i) \quad(단, n = 단계, F(n) = Fibonacci(n))
-$$
+![](./image/Main_MathExp_01.png)
 
 ##### 3.1.2.2. 점수
 
@@ -244,11 +239,8 @@ $$
 
 *   등장 확률은 다음과 같습니다.
 
-    **P = F(n-2) / (sigma) i = 1 to n F(i) (단, n = 단계, F(n) = Fibonacci(n))**
 
-$$
-P = F(n-2) / \sum\limits_{i=1}^nF(i) \quad(단, n = 단계, F(n) = Fibonacci(n))
-$$
+![](./image/Main_MathExp_02.png)
 
 ##### 3.1.3.2. 점수
 
@@ -266,11 +258,10 @@ $$
 
 *   등장 확률은 다음과 같습니다.
 
-    **P = F(n-3) / (sigma) i = 1 to n F(i) (단, n = 단계, F(n) = Fibonacci(n))**
 
-$$
-P = F(n-3) / \sum\limits_{i=1}^nF(i) \quad(단, n = 단계,F(n) = Fibonacci(n))
-$$
+![](./image/Main_MathExp_03.png)
+
+
 
 ##### 3.1.4.2 점수
 
@@ -289,11 +280,8 @@ $$
 
 *   등장 확률은 다음과 같습니다.
 
-    **P = F(n-4) / (sigma) i = 1 to n F(i) (단, n = 단계, F(n) = Fibonacci(n))**
 
-$$
-P = F(n-4) / \sum\limits_{i=1}^nF(i) \quad(단, n = 단계, F(n) = Fibonacci(n))
-$$
+![](./image/Main_MathExp_04.png)
 
 ##### 3.1.5.2 점수
 
@@ -320,11 +308,7 @@ $$
 
 *   미사일의 생성 위치는 랜덤한 화면 가장자리이며, 생성 주기는 다음 공식을 따릅니다.
 
-    **I = 10*(7-n)/5(sec) (단, n = 단계, n>1)**
-
-$$
-I = 10*\frac{7-n}{5}(sec)\quad(단, n = 단계, n>1)
-$$
+    ![](./image/Main_MathExp_05.png)
 
 >예를 들어, 1단계의 경우 미사일이 생성되지 않으며,
 >
