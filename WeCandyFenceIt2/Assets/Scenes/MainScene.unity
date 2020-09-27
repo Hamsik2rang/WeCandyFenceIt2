@@ -630,8 +630,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frontPointer: {fileID: 2025884507}
-  rotateSpeed: 45
-  moveSpeed: 200
 --- !u!4 &1458391332
 Transform:
   m_ObjectHideFlags: 0
