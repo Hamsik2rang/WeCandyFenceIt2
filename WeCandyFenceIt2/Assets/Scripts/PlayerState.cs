@@ -18,8 +18,8 @@ public class PlayerState : MonoBehaviour
     private Vector2 moveDirection;
     Rigidbody2D playerRigidbody;
     public GameObject frontPointer;
-    public float rotateSpeed;
-    public float moveSpeed;
+    float rotateSpeed=45;
+    float moveSpeed=2;
 
     void Start()
     {
@@ -142,6 +142,7 @@ public class PlayerState : MonoBehaviour
         {
             this.transform.Rotate(new Vector3(0, 0, rotateSpeed) * Time.deltaTime);
         }
-        playerRigidbody.velocity = moveDirectionNow * Time.deltaTime * moveSpeed;
+        //playerRigidbody.velocity = moveDirectionNow.normalized * Time.deltaTime * moveSpeed;
+        this.transform.Translate(new Vector2(0,1) * Time.deltaTime * moveSpeed);
     }
 }
