@@ -121,7 +121,7 @@ public class PlayerState : MonoBehaviour
                 GameObject.Find("JstickNob").transform.localPosition = 50* ((Vector2)Input.mousePosition - moveDirectionStart).normalized;
             }
             moveDirection = ((Vector2)Input.mousePosition - moveDirectionStart).normalized;
-            UnityEngine.Debug.Log("방향 : " + moveDirection);
+            //UnityEngine.Debug.Log("방향 : " + moveDirection);
         }
 
         //아래부터는 공용
