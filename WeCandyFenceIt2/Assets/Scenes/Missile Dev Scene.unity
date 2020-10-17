@@ -682,76 +682,76 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!1 &1812244481 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 754589658770943730, guid: 30ad17465ff797e4f84919f3e19d806d,
+  m_CorrespondingSourceObject: {fileID: 168595056550790078, guid: 282c39782527c8840aaae3aa3a13616d,
     type: 3}
-  m_PrefabInstance: {fileID: 754589657361876723}
+  m_PrefabInstance: {fileID: 168595058094533567}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &754589657361876723
+--- !u!1001 &168595058094533567
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 754589658770943730, guid: 30ad17465ff797e4f84919f3e19d806d,
-        type: 3}
-      propertyPath: m_Name
-      value: Missile
-      objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.1111896
       objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.20928138
       objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -1.1342773
       objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7021233116328885242, guid: 30ad17465ff797e4f84919f3e19d806d,
+    - target: {fileID: 168595056550790076, guid: 282c39782527c8840aaae3aa3a13616d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 168595056550790078, guid: 282c39782527c8840aaae3aa3a13616d,
+        type: 3}
+      propertyPath: m_Name
+      value: Missile
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 30ad17465ff797e4f84919f3e19d806d, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 282c39782527c8840aaae3aa3a13616d, type: 3}
