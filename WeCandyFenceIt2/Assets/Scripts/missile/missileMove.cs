@@ -22,8 +22,6 @@ public class MissileMove : MonoBehaviour
         randomColor = new Color[4] { Color.red, Color.cyan, Color.blue, Color.white };
 
         missileRenderer.color = randomColor[Random.Range(0, 4)];
-
-        Invoke("DestroyMissile", 15);
     }
 
     // Update is called once per frame
@@ -54,12 +52,5 @@ public class MissileMove : MonoBehaviour
         this.transform.Translate(new Vector2(0, 1) * Time.deltaTime * moveSpeed);
 
     }
-
-    void DestroyMissile()
-    {
-        //TODO:추후 폭발애니메이션 삽입할것
-        Destroy(this.gameObject);
-    }
-
 
 }

@@ -22,6 +22,12 @@ public class PlayerState : MonoBehaviour
     [SerializeField]
     float moveSpeed = 4;
 
+    public float rotateQuantity
+    {
+        get;
+        private set;
+    } = 0f;
+
     void Start()
     {
         isAlive = true;
@@ -126,18 +132,19 @@ public class PlayerState : MonoBehaviour
         moveDirectionNow = transform.up;
         float directSelect = Vector2.SignedAngle(moveDirection, moveDirectionNow);
 
-
-
         if (directSelect > 2 && directSelect < 180)
         {
+            rotateQuantity = -rotateSpeed * Time.deltaTime;
             this.transform.Rotate(new Vector3(0, 0, -rotateSpeed) * Time.deltaTime);
         }
         else if (directSelect >= -2 && directSelect <= 2)
         {
             //보정
+            rotateQuantity = 0f;
         }
         else
         {
+            rotateQuantity = rotateSpeed * Time.deltaTime;
             this.transform.Rotate(new Vector3(0, 0, rotateSpeed) * Time.deltaTime);
         }
         //playerRigidbody.velocity = moveDirectionNow.normalized * Time.deltaTime * moveSpeed;
