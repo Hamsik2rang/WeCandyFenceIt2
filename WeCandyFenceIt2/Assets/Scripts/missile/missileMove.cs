@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class MissileMove : MonoBehaviour
 {
-
+    Color[] randomColor;
     GameObject player;
+    SpriteRenderer missileRenderer;
     Vector2 nowDir;
     Vector2 targetDir;
     [SerializeField]
-    float rotateSpeed = 40;
+    float rotateSpeed = 100;
     [SerializeField]
-    float moveSpeed = 2.2f;
+    float moveSpeed = 6.5f;
     // Start is called before the first frame update
     void Start()
     {
+        missileRenderer = GetComponent<SpriteRenderer>();
         player = GameObject.Find("Player");
+
+        randomColor = new Color[4] { Color.red, Color.cyan, Color.blue, Color.white };
+
+        missileRenderer.color = randomColor[Random.Range(0, 4)];
+
+        Invoke("DestroyMissile", 15);
     }
 
     // Update is called once per frame
@@ -46,4 +54,12 @@ public class MissileMove : MonoBehaviour
         this.transform.Translate(new Vector2(0, 1) * Time.deltaTime * moveSpeed);
 
     }
+
+    void DestroyMissile()
+    {
+        //TODO:추후 폭발애니메이션 삽입할것
+        Destroy(this.gameObject);
+    }
+
+
 }
