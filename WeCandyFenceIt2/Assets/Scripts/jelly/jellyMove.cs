@@ -4,11 +4,19 @@ using UnityEngine;
 
 public class jellyMove : MonoBehaviour
 {
-    float fallSpeed;
+    Color[] randomColor;
+    [SerializeField]
+    float fallSpeed = 2f;
+    SpriteRenderer jellyRenderer;
     // Start is called before the first frame update
     void Start()
     {
-        fallSpeed = UnityEngine.Random.Range(0.1f, 3);
+        jellyRenderer = GetComponent<SpriteRenderer>();
+
+        randomColor = new Color[4] { Color.red, Color.cyan, Color.blue, Color.white };
+        //fallSpeed = UnityEngine.Random.Range(0.1f, 3);
+        jellyRenderer.color = randomColor[Random.Range(0, 4)];
+        Debug.Log(jellyRenderer.color);
     }
 
 
