@@ -31,7 +31,6 @@ public class PlayerState : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
-
     void Update()
     {
         timer += Time.deltaTime;
