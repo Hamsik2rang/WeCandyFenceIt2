@@ -594,7 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateSpeed: 110
-  moveSpeed: 5
+  moveSpeed: 5.5
 --- !u!4 &1458391332
 Transform:
   m_ObjectHideFlags: 0
@@ -709,7 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a527bc93a89c05c42ab0fd439e0a0ecc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missile: {fileID: 168595056550790078, guid: 282c39782527c8840aaae3aa3a13616d, type: 3}
+  missile: {fileID: 754589658770943730, guid: 30ad17465ff797e4f84919f3e19d806d, type: 3}
 --- !u!4 &2107216214
 Transform:
   m_ObjectHideFlags: 0
