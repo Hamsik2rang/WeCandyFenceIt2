@@ -17,9 +17,10 @@ public class PlayerState : MonoBehaviour
     private Vector2 moveDirectionNow;
     private Vector2 moveDirection;
     Rigidbody2D playerRigidbody;
-    public GameObject frontPointer;
-    float rotateSpeed=45;
-    float moveSpeed=2;
+    [SerializeField]
+    float rotateSpeed = 90;
+    [SerializeField]
+    float moveSpeed = 4;
 
     void Start()
     {
@@ -30,14 +31,12 @@ public class PlayerState : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    
+
     void Update()
     {
         timer += Time.deltaTime;
 
-
         Movement();
-
 
         /*
         // 5초 뒤 Player 사망
@@ -118,14 +117,14 @@ public class PlayerState : MonoBehaviour
             }
             else
             {
-                GameObject.Find("JstickNob").transform.localPosition = 50* ((Vector2)Input.mousePosition - moveDirectionStart).normalized;
+                GameObject.Find("JstickNob").transform.localPosition = 50 * ((Vector2)Input.mousePosition - moveDirectionStart).normalized;
             }
             moveDirection = ((Vector2)Input.mousePosition - moveDirectionStart).normalized;
             //UnityEngine.Debug.Log("방향 : " + moveDirection);
         }
 
         //아래부터는 공용
-        moveDirectionNow = (frontPointer.transform.position - this.transform.position).normalized;
+        moveDirectionNow = transform.up;
         float directSelect = Vector2.SignedAngle(moveDirection, moveDirectionNow);
 
 
@@ -143,6 +142,6 @@ public class PlayerState : MonoBehaviour
             this.transform.Rotate(new Vector3(0, 0, rotateSpeed) * Time.deltaTime);
         }
         //playerRigidbody.velocity = moveDirectionNow.normalized * Time.deltaTime * moveSpeed;
-        this.transform.Translate(new Vector2(0,1) * Time.deltaTime * moveSpeed);
+        this.transform.Translate(new Vector2(0, 1) * Time.deltaTime * moveSpeed);
     }
 }

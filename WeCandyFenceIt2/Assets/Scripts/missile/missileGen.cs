@@ -2,11 +2,11 @@
 using System.Collections;
 using UnityEngine;
 
-public class missileGen : MonoBehaviour
+public class MissileGen : MonoBehaviour
 {
     public GameObject missile;
     GameObject player;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class missileGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     IEnumerator missileGenCoroutine()
     {
@@ -37,7 +37,7 @@ public class missileGen : MonoBehaviour
 
             float ang = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
             Instantiate(missile, new Vector2(randFloatX, randFloatY), Quaternion.AngleAxis(ang, Vector3.forward));
-            
+
             yield return new WaitForSeconds(DelayGen);
             DelayGen = DelayGen * Delaytimes;
         }
