@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class missile_move : MonoBehaviour
+public class missileMove : MonoBehaviour
 {
 
     GameObject player;
