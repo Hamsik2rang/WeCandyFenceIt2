@@ -26,9 +26,9 @@ public class missile_move : MonoBehaviour
         targetDir = player.transform.position - transform.position;
 
         
-        float ang = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(ang, Vector3.forward);
-        /*
+        //float ang = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
+        //transform.rotation = Quaternion.AngleAxis(ang, Vector3.forward);
+        
         float rotateDir = Vector2.SignedAngle(targetDir, nowDir);
         if (rotateDir > 2 && rotateDir < 180)
         {
@@ -43,6 +43,6 @@ public class missile_move : MonoBehaviour
             this.transform.Rotate(new Vector3(0, 0, rotateSpeed) * Time.deltaTime);
         }
         this.transform.Translate(new Vector2(0, 1) * Time.deltaTime * moveSpeed);
-        */
+        
     }
 }
