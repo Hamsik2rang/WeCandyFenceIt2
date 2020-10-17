@@ -17,12 +17,12 @@ public class jellyGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     IEnumerator jellyGenCoroutine()
     {
-        float[] genAreaX = { -6f, 6f };
-        float genAreaY = 5f;
+        float[] genAreaX = { -8f, 8f };
+        float genAreaY = 15f;
         float delayTimes = 0.99f;
         float genDelay = 2f;
         while (true)
