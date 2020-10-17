@@ -13,10 +13,11 @@ public class jellyMove : MonoBehaviour
     {
         jellyRenderer = GetComponent<SpriteRenderer>();
 
-        randomColor = new Color[4] { Color.red, Color.cyan, Color.blue, Color.white };
+        randomColor = new Color[4] { new Color(150 / 255f, 190 / 255f, 1f, 1f), new Color(1f, 185f / 255, 180f / 255, 1f), new Color(210f / 255, 1, 180f / 255, 1f), new Color(1, 225f / 255, 180f / 255, 1f) };
         //fallSpeed = UnityEngine.Random.Range(0.1f, 3);
-        jellyRenderer.color = randomColor[Random.Range(0, 4)];
-        Debug.Log(jellyRenderer.color);
+        int index = Random.Range(0, 4);
+        jellyRenderer.color = randomColor[index];
+        Debug.Log(index + "  " + jellyRenderer.color);
     }
 
 
