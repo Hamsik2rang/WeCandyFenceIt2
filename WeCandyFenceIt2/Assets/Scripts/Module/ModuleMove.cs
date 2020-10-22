@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class ModuleMove : MonoBehaviour
 {
-    public GameObject target;
-    PlayerState playerState;
-    public float spd = 200;
+    [SerializeField]
+    private GameObject target;
+    private PlayerState playerState;
+    public float rotateSpeed = 200;
 
     void Start()
     {
@@ -15,13 +16,11 @@ public class ModuleMove : MonoBehaviour
 
     void Update()
     {
-        ModuleRotation();
+        Rotate();
     }
 
-    void ModuleRotation()
+    void Rotate()
     {
-        transform.RotateAround(target.transform.position, new Vector3(0.0f, 0.0f, -1.0f), spd * Time.deltaTime + playerState.rotateQuantity);
-
-        //transform.RotateAround(target.transform.position, new Vector3(0.0f, 0.0f, -1.0f), spd * Time.deltaTime);
+        transform.RotateAround(target.transform.position, Vector3.back, rotateSpeed * Time.deltaTime + playerState.rotateQuantity);
     }
 }

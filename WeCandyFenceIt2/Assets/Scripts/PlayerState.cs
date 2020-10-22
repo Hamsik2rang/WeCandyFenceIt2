@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,19 +7,25 @@ using UnityEngine.UIElements;
 
 public class PlayerState : MonoBehaviour
 {
-    private float timer;
-    private int waitingTime;
-    bool isAlive;
+    const int JOYSTICK_MOVING_RANGE = 50;
+    const int POSITIVE = -1;
+    const int NEGATIVE = 1;
+
+    enum Direction { POSITIVE = -1, NONE = 0, NEGATIVE = 1 };
+
+    GameObject joyStick;
+    GameObject joyStickKnob;
 
     //움직임 구현 변수들
-    private Vector2 moveDirectionStart;
-    private Vector2 moveDirectionNow;
-    private Vector2 moveDirection;
-    Rigidbody2D playerRigidbody;
+    private Vector2 originStickPosition;    //moveDirectionStart
+    private Vector2 currentDirection;       //moveDirectionNow
+    private Vector2 moveDirection;          
+
     [SerializeField]
     float rotateSpeed = 90;
     [SerializeField]
     float moveSpeed = 4;
+    bool isAlive;
 
     public float rotateQuantity
     {
@@ -30,27 +35,14 @@ public class PlayerState : MonoBehaviour
 
     void Start()
     {
+        joyStick = GameObject.Find("JoyStick");
+        joyStickKnob = GameObject.Find("JoyStickKnob");
         isAlive = true;
-        timer = 0.0f;
-        waitingTime = 5;
-
-        playerRigidbody = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-
-        Movement();
-
-        /*
-        // 5초 뒤 Player 사망
-        if (timer > waitingTime)
-        {
-            isAlive = false;
-            timer = 0.0f;
-        }
-        */
+        Move();
 
         if (!isAlive)
         {
@@ -65,9 +57,33 @@ public class PlayerState : MonoBehaviour
     }
 
     //움직임 처리
-    void Movement()
+    void Move()
     {
+        Direction rotateDirection;
 
+        float directionAngle = GetDirectionAngle();
+
+        if (directionAngle > 2 && directionAngle < 180)
+            rotateDirection = Direction.POSITIVE;
+        else if (directionAngle >= -2 && directionAngle <= 2)
+            rotateDirection = Direction.NONE;
+        else
+            rotateDirection = Direction.NEGATIVE;
+        
+        Rotate(rotateDirection);
+
+        transform.Translate(Vector2.up * Time.deltaTime * moveSpeed);
+    }
+
+    void Rotate(Direction rotateDirection)
+    {
+        rotateQuantity = (int)rotateDirection * rotateSpeed * Time.deltaTime;
+        transform.Rotate(new Vector3(0, 0, rotateQuantity));
+    }
+
+    float GetDirectionAngle()
+    {
+        currentDirection = transform.up;
 
         //움직임 방향처리(터치용)
         /*
@@ -77,77 +93,57 @@ public class PlayerState : MonoBehaviour
             Touch touch = Input.GetTouch(0);
             if(touch.phase == TouchPhase.Began)
             {
-                moveDirectionStart = GameObject.Find("Jstick").transform.position;
+                originPosition = GameObject.Find("Jstick").transform.position;
             }
             else if(touch.phase == TouchPhase.Ended)
             {
-                moveDirectionStart = Vector2.zero;
+                originPosition = Vector2.zero;
                 moveDirection = Vector2.zero;
                 GameObject.Find("JstickNob").transform.localPosition = new Vector2(0, 0);
             }
             else if(touch.phase == TouchPhase.Moved)
             {
-                moveDirection = (touch.position - moveDirectionStart).normalized;
+                moveDirection = (touch.position - originPosition).normalized;
 
-                moveDirection = (touch.position - moveDirectionStart);
+                moveDirection = (touch.position - originPosition);
                 if (moveDirection.magnitude < 50)
                 {
                     GameObject.Find("JstickNob").transform.position = touch.position;
                 }
                 else
                 {
-                    GameObject.Find("JstickNob").transform.localPosition = 50* (touch.position - moveDirectionStart).normalized;
+                    GameObject.Find("JstickNob").transform.localPosition = 50* (touch.position - originPosition).normalized;
                 }
-                    moveDirection = (touch.position - moveDirectionStart).normalized;
+                    moveDirection = (touch.position - originPosition).normalized;
                 }
         }
         */
+
         //마우스용
         if (Input.GetMouseButtonDown(0))
         {
-            moveDirectionStart = GameObject.Find("Jstick").transform.position;
+            originStickPosition = joyStick.transform.position;
         }
+
         else if (Input.GetMouseButtonUp(0))
         {
-            moveDirectionStart = Vector2.zero;
+            originStickPosition = Vector2.zero;
             moveDirection = Vector2.zero;
-            GameObject.Find("JstickNob").transform.localPosition = new Vector2(0, 0);
+            joyStickKnob.transform.localPosition = new Vector2(0, 0);
         }
+
         else if (Input.GetMouseButton(0))
         {
-            moveDirection = ((Vector2)Input.mousePosition - moveDirectionStart);
-            if (moveDirection.magnitude < 50)
-            {
-                GameObject.Find("JstickNob").transform.position = (Vector2)Input.mousePosition;
-            }
+            moveDirection = ((Vector2)Input.mousePosition - originStickPosition);
+
+            if (moveDirection.magnitude < JOYSTICK_MOVING_RANGE)
+                joyStickKnob.transform.position = (Vector2)Input.mousePosition;
             else
-            {
-                GameObject.Find("JstickNob").transform.localPosition = 50 * ((Vector2)Input.mousePosition - moveDirectionStart).normalized;
-            }
-            moveDirection = ((Vector2)Input.mousePosition - moveDirectionStart).normalized;
-            //UnityEngine.Debug.Log("방향 : " + moveDirection);
+                joyStickKnob.transform.localPosition = JOYSTICK_MOVING_RANGE * ((Vector2)Input.mousePosition - originStickPosition).normalized;
+            
+            moveDirection = moveDirection.normalized;
         }
 
-        //아래부터는 공용
-        moveDirectionNow = transform.up;
-        float directSelect = Vector2.SignedAngle(moveDirection, moveDirectionNow);
-
-        if (directSelect > 2 && directSelect < 180)
-        {
-            rotateQuantity = -rotateSpeed * Time.deltaTime;
-            this.transform.Rotate(new Vector3(0, 0, -rotateSpeed) * Time.deltaTime);
-        }
-        else if (directSelect >= -2 && directSelect <= 2)
-        {
-            //보정
-            rotateQuantity = 0f;
-        }
-        else
-        {
-            rotateQuantity = rotateSpeed * Time.deltaTime;
-            this.transform.Rotate(new Vector3(0, 0, rotateSpeed) * Time.deltaTime);
-        }
-        //playerRigidbody.velocity = moveDirectionNow.normalized * Time.deltaTime * moveSpeed;
-        this.transform.Translate(new Vector2(0, 1) * Time.deltaTime * moveSpeed);
+        return Vector2.SignedAngle(moveDirection, currentDirection);
     }
 }

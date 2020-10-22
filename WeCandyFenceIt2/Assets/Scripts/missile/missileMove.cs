@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class MissileMove : MonoBehaviour
 {
+    enum Direction { NEGATIVE = -1, NONE, POSITIVE };
     Color[] randomColor;
+
     GameObject player;
     SpriteRenderer missileRenderer;
-    Vector2 nowDir;
-    Vector2 targetDir;
+
+    Vector2 currentDirection, targetDirection;
+
     [SerializeField]
     float rotateSpeed = 100;
     [SerializeField]
     float moveSpeed = 6.5f;
-    // Start is called before the first frame update
+
     void Start()
     {
         missileRenderer = GetComponent<SpriteRenderer>();
@@ -24,33 +27,36 @@ public class MissileMove : MonoBehaviour
         missileRenderer.color = randomColor[Random.Range(0, 4)];
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-
-        //회전 
-        nowDir = transform.up;
-        targetDir = player.transform.position - transform.position;
-
-
-        //float ang = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.AngleAxis(ang, Vector3.forward);
-
-        float rotateDir = Vector2.SignedAngle(targetDir, nowDir);
-        if (rotateDir > 2 && rotateDir < 180)
-        {
-            this.transform.Rotate(new Vector3(0, 0, -rotateSpeed) * Time.deltaTime);
-        }
-        else if (rotateDir >= -2 && rotateDir <= 2)
-        {
-            //보정
-        }
-        else
-        {
-            this.transform.Rotate(new Vector3(0, 0, rotateSpeed) * Time.deltaTime);
-        }
+        Rotate();
         this.transform.Translate(new Vector2(0, 1) * Time.deltaTime * moveSpeed);
-
     }
 
+    void Rotate()
+    {
+        Direction rotateDirection;
+
+        float directionAngle = GetDirectionAngle();
+
+        if (directionAngle > 2 && directionAngle < 180)
+            rotateDirection = Direction.NEGATIVE;
+        else if (directionAngle >= -2 && directionAngle <= 2)
+            rotateDirection = Direction.NONE;
+        else
+            rotateDirection = Direction.POSITIVE;
+
+        float rotateQuantity = (int)rotateDirection * rotateSpeed * Time.deltaTime;
+
+        this.transform.Rotate(new Vector3(0, 0, rotateQuantity));
+    }
+
+    float GetDirectionAngle()
+    {
+        currentDirection = transform.up;
+        targetDirection = player.transform.position - transform.position;
+
+        return Vector2.SignedAngle(targetDirection, currentDirection);
+    }
 }

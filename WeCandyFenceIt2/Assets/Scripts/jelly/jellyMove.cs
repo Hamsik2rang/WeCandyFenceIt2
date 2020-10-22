@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class jellyMove : MonoBehaviour
 {
-    Color[] randomColor;
+    Color[] jellyColor;
     [SerializeField]
     float fallSpeed = 2f;
     SpriteRenderer jellyRenderer;
@@ -12,12 +12,19 @@ public class jellyMove : MonoBehaviour
     void Start()
     {
         jellyRenderer = GetComponent<SpriteRenderer>();
+        jellyRenderer.color = GetRandomColor();
 
-        randomColor = new Color[4] { new Color(150 / 255f, 190 / 255f, 1f, 1f), new Color(1f, 185f / 255, 180f / 255, 1f), new Color(210f / 255, 1, 180f / 255, 1f), new Color(1, 225f / 255, 180f / 255, 1f) };
-        //fallSpeed = UnityEngine.Random.Range(0.1f, 3);
+    }
+
+    Color GetRandomColor()
+    {
+        jellyColor = new Color[4] { new Color(150 / 255f, 190 / 255f, 1f, 1f), 
+                    new Color(1f, 185f / 255, 180f / 255, 1f), 
+                    new Color(210f / 255, 1, 180f / 255, 1f), 
+                    new Color(1, 225f / 255, 180f / 255, 1f) };
         int index = Random.Range(0, 4);
-        jellyRenderer.color = randomColor[index];
-        Debug.Log(index + "  " + jellyRenderer.color);
+
+        return jellyColor[index];
     }
 
 
@@ -26,6 +33,7 @@ public class jellyMove : MonoBehaviour
     {
         transform.Translate(new Vector2(0, -fallSpeed) * Time.deltaTime);
     }
+
     private void OnBecameInvisible()
     {
         Destroy(gameObject);

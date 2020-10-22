@@ -5,37 +5,36 @@ using UnityEngine;
 
 public class jellyGen : MonoBehaviour
 {
-
+    const float START_GEN_POINT = -8f;
+    const float END_GEN_POINT = 8f;
     public GameObject jelly;
-    // Start is called before the first frame update
+
     void Start()
     {
         StartCoroutine("jellyGenCoroutine");
         StartCoroutine("jellyGenStopCoroutine");
     }
 
-    // Update is called once per frame
     void Update()
     {
 
     }
     IEnumerator jellyGenCoroutine()
     {
-        float[] genAreaX = { -8f, 8f };
-        float genAreaY = 15f;
-        float delayTimes = 0.99f;
+        float[] genPosX = { START_GEN_POINT, END_GEN_POINT };
+        float genPosY = 15f;
+        float genDelayTime = 0.99f;
         float genDelay = 2f;
         while (true)
         {
-            Instantiate(jelly, new Vector2(UnityEngine.Random.Range(genAreaX[0], genAreaX[1]), genAreaY), Quaternion.identity);
+            Instantiate(jelly, new Vector2(UnityEngine.Random.Range(genPosX[0], genPosX[1]), genPosY), Quaternion.identity);
             yield return new WaitForSeconds(genDelay);
-            genDelay = genDelay * delayTimes;
+            genDelay = genDelay * genDelayTime;
         }
     }
     IEnumerable jellyGenStopCoroutine()
     {
         yield return new WaitForSeconds(3600f);
-        StopCoroutine("jellyGenCoroutine");
-        StopCoroutine("jellyGenStopCoroutine");
+        StopAllCoroutines();
     }
 }
