@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7021233116328885242}
   - component: {fileID: 3261412914116984017}
-  - component: {fileID: -9194719386485334139}
+  - component: {fileID: 8751820723732537486}
   m_Layer: 0
   m_Name: Missile
   m_TagString: Untagged
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-9194719386485334139
+--- !u!114 &8751820723732537486
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
