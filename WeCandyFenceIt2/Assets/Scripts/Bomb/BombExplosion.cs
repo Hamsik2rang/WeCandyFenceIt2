@@ -39,7 +39,7 @@ public class BombExplosion : MonoBehaviour
         if (collision.gameObject.tag == "Jelly")
         {
             Destroy(collision.gameObject);
-            //스코어 추가
+            //TODO: 스코어 추가
         }
     }
 }

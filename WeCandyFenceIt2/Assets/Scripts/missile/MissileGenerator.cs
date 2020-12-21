@@ -7,23 +7,27 @@ public class MissileGenerator : MonoBehaviour
     public GameObject missile;
     GameObject player;
 
-    // Start is called before the first frame update
+    //TODO: 스코어와 연결, 테스트를 위해 임시로 100으로 지정
+    int gameScore=99;
+    float missileGenDelay = 10f;
+    bool missileGenCoroutineBool = false;
+
     void Start()
     {
         player = GameObject.Find("Player");
-        StartCoroutine("missileGenCoroutine");
-        StartCoroutine("missileGenStopCoroutine");
+
+        //TODO: 스코어 트리거와 연결시 삭제할것
+        MissileGenController();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
     }
-    IEnumerator missileGenCoroutine()
+    IEnumerator MissileGenCoroutine()
     {
-        float GenDelay = 20f;
-        float GenDelayTimes = 0.9f;
+        Debug.Log("coroutine 시작");
+        missileGenCoroutineBool = true;
         while (true)
         {
             float randFloatX = UnityEngine.Random.Range(-9, 9);
@@ -38,14 +42,40 @@ public class MissileGenerator : MonoBehaviour
             float ang = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
             Instantiate(missile, new Vector2(randFloatX, randFloatY), Quaternion.AngleAxis(ang, Vector3.forward));
 
-            yield return new WaitForSeconds(GenDelay);
-            GenDelay = GenDelay * GenDelayTimes;
+            yield return new WaitForSeconds(missileGenDelay);
         }
     }
-    IEnumerator missileGenStopCoroutine()
+
+    //TODO:스코어 획득 트리거와 연결할것
+    public void MissileGenController()
     {
+        Debug.Log("컨트롤러 호출");
+        if (50<=gameScore && gameScore<100)
+        {
+            missileGenDelay = 10;
+            if (missileGenCoroutineBool == false)
+            {
+                StartCoroutine("MissileGenCoroutine");
+            }
+        }
+        else if(100<=gameScore && gameScore < 300)
+        {
+            missileGenDelay = 8;
+
+        }
+        else if (300 <= gameScore && gameScore < 500)
+        {
+            missileGenDelay = 6;
+        }
+        else if (500 <= gameScore)
+        {
+            missileGenDelay = 4;
+        }
+    }
+    IEnumerator MissileGenStopCoroutine()
+    {
+        missileGenCoroutineBool = false;
         yield return new WaitForSeconds(60f);
         StopAllCoroutines();
-
     }
 }

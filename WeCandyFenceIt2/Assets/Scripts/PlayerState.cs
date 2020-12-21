@@ -51,7 +51,7 @@ public class PlayerState : MonoBehaviour
     }
 
     // 게임오버 시 ResultScene 불러오기
-    void GameOver()
+    public void GameOver()
     {
         SceneManager.LoadScene("ResultScene");
     }

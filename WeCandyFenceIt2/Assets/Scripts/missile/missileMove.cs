@@ -7,20 +7,20 @@ public class MissileMove : MonoBehaviour
     enum Direction { NEGATIVE = -1, NONE, POSITIVE };
     Color[] randomColor;
 
-    GameObject player;
+    GameObject playerGameobject;
     SpriteRenderer missileRenderer;
 
     Vector2 currentDirection, targetDirection;
 
     [SerializeField]
-    float rotateSpeed = 100;
+    float rotateSpeed = 80;
     [SerializeField]
-    float moveSpeed = 6.5f;
+    float moveSpeed = 5f;
 
     void Start()
     {
         missileRenderer = GetComponent<SpriteRenderer>();
-        player = GameObject.Find("Player");
+        playerGameobject = GameObject.Find("Player");
 
         randomColor = new Color[4] { Color.red, Color.cyan, Color.blue, Color.white };
 
@@ -55,7 +55,7 @@ public class MissileMove : MonoBehaviour
     float GetDirectionAngle()
     {
         currentDirection = transform.up;
-        targetDirection = player.transform.position - transform.position;
+        targetDirection = playerGameobject.transform.position - transform.position;
 
         return Vector2.SignedAngle(targetDirection, currentDirection);
     }
