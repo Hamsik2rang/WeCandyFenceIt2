@@ -26,7 +26,6 @@ public class MissileGenerator : MonoBehaviour
     }
     IEnumerator MissileGenCoroutine()
     {
-        Debug.Log("coroutine 시작");
         missileGenCoroutineBool = true;
         while (true)
         {
@@ -49,7 +48,6 @@ public class MissileGenerator : MonoBehaviour
     //TODO:스코어 획득 트리거와 연결할것
     public void MissileGenController()
     {
-        Debug.Log("컨트롤러 호출");
         if (50<=gameScore && gameScore<100)
         {
             missileGenDelay = 10;

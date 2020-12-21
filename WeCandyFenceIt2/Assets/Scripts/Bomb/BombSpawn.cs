@@ -6,7 +6,7 @@ public class BombSpawn : MonoBehaviour
 {
     public GameObject BombOrigin;
     float BombSpawnDelay = 10f;
-    bool BombSpawnCoroutineBool = false;
+    public bool BombSpawnCoroutineBool = false;
     GameObject Player;
     void Start()
     {

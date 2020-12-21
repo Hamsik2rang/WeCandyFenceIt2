@@ -28,7 +28,7 @@ public class BombExplosion : MonoBehaviour
         yield return new WaitForSeconds(BombWaitTime);
         BombExplosionAreaCollider.enabled = true;
         Debug.Log("bomb");
-        //애니메이션 추가
+        //TODO: 애니메이션 추가
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }

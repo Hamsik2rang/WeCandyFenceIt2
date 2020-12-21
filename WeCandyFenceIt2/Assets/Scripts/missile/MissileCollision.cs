@@ -20,7 +20,6 @@ public class MissileCollision : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D targetCollider)
     {
         GameObject targetObject = targetCollider.gameObject;
-        Debug.Log(targetObject);
         if (targetObject.tag == "Player")
         {
             //TODO: 플레이어 격추시 모듈 감소 처리 및 게임오버 연결
