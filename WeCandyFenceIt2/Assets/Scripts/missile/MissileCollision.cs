@@ -29,7 +29,6 @@ public class MissileCollision : MonoBehaviour
         }
         if (targetObject.tag == "Missile")
         {
-            Debug.Log("trigger");
             Destroy(targetObject);
             Destroy(this.gameObject);
         }

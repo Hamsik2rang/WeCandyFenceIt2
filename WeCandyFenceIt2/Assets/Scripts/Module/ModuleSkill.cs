@@ -26,7 +26,6 @@ public class ModuleSkill : MonoBehaviour
         if (mode == moduleMode.interceptorModule)
         {
             StartCoroutine("InterceptorCorroutine");
-            Debug.Log("start");
         }
         else if (mode == moduleMode.bombDelayDown)
         {
@@ -57,7 +56,6 @@ public class ModuleSkill : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("now");
             distance = 0;
             shotVecter = Vector2.zero;
             GameObject[] missile = GameObject.FindGameObjectsWithTag("Missile");
@@ -66,7 +64,6 @@ public class ModuleSkill : MonoBehaviour
             {
                 for (int i = 0; i < missile.Length; i++)
                 {
-                    Debug.Log(missile[i].name);
                     missileVectorFOR = missile[i].transform.position;
                     playerVectorFOR = this.transform.parent.transform.position;
                     if (distance == 0 || distance > Vector2.Distance(missileVectorFOR, playerVectorFOR))
@@ -78,12 +75,13 @@ public class ModuleSkill : MonoBehaviour
                 missileVector = missile[missileNumber].transform.transform.position;
                 playerVector = this.transform.parent.transform.position;
                 shotVecter = playerVector-missileVector;
-                Debug.Log("missile : " + missileVector);
-                Debug.Log("player : " + playerVector);
+
+                float ang = Vector3.SignedAngle(Vector3.up,shotVecter,Vector3.forward);
+                Debug.Log(ang);
+                Instantiate(bullet, this.transform.position, Quaternion.Euler(new Vector3(0,0,180+ang)));
+
+
             }
-            float ang = Mathf.Atan2(shotVecter.y, shotVecter.x) * Mathf.Rad2Deg;
-            Instantiate(bullet, this.transform.position, Quaternion.AngleAxis(ang, Vector3.forward));
-            
             yield return new WaitForSeconds(1f);
         }
     }
@@ -92,7 +90,6 @@ public class ModuleSkill : MonoBehaviour
     {
         if (mode == moduleMode.interceptorModule)
         {
-            Debug.Log("stop");
             StopAllCoroutines();
         }
         else if (mode == moduleMode.bombDelayDown)
