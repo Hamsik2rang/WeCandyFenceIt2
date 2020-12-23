@@ -15,7 +15,8 @@ public class BombSpawn : MonoBehaviour
 
     void Update()
     {
-        
+        BombSpawnDelay = GameObject.Find("Player").GetComponent<PlayerState>().bombDelay;
+
     }
 
     public void OnClickBombSpawn()
@@ -29,7 +30,7 @@ public class BombSpawn : MonoBehaviour
     {
         BombSpawnCoroutineBool = true;
         Instantiate(BombOrigin, new Vector2(Player.transform.position.x, Player.transform.position.y), Quaternion.identity);
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(BombSpawnDelay);
         BombSpawnCoroutineBool = false;
     }
 }

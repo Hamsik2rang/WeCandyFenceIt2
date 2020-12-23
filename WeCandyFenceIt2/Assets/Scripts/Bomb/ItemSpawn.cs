@@ -21,12 +21,10 @@ public class ItemSpawn : MonoBehaviour
     }
     public void OnClickFlareSpawn()
     {
-        Debug.Log("flare");
         if (itemSetDelay == false)
         {
             StartCoroutine("ItemSetDelayCoroutine");
             itemBomb.GetComponent<ItemExplosion>().myType = (int)itemType.flareItem;
-            Debug.Log(itemBomb.GetComponent<ItemExplosion>().myType);
             Instantiate(itemBomb, new Vector2(player.transform.position.x, player.transform.position.y), Quaternion.identity);
         }
     }
@@ -36,7 +34,6 @@ public class ItemSpawn : MonoBehaviour
         {
             StartCoroutine("ItemSetDelayCoroutine");
             itemBomb.GetComponent<ItemExplosion>().myType = (int)itemType.NapalmItem;
-            Debug.Log(itemBomb.GetComponent<ItemExplosion>().myType);
             Instantiate(itemBomb, new Vector2(player.transform.position.x, player.transform.position.y), Quaternion.identity);
         }
     }

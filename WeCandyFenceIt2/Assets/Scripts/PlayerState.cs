@@ -16,6 +16,10 @@ public class PlayerState : MonoBehaviour
     GameObject joyStick;
     GameObject joyStickKnob;
 
+    //모듈과의 연결을 위한 중간 연결 변수
+    public float bombRadius = 2f;
+    public float bombDelay = 10f;
+
     //움직임 구현 변수들
     private Vector2 originStickPosition;    //moveDirectionStart
     private Vector2 currentDirection;       //moveDirectionNow

@@ -6,7 +6,6 @@ public class MissileGenerator : MonoBehaviour
 {
     public GameObject missile;
     GameObject player;
-
     //TODO: 스코어와 연결, 테스트를 위해 임시로 100으로 지정
     int gameScore=99;
     float missileGenDelay = 10f;
@@ -40,6 +39,7 @@ public class MissileGenerator : MonoBehaviour
 
             float ang = Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg;
             Instantiate(missile, new Vector2(randFloatX, randFloatY), Quaternion.AngleAxis(ang, Vector3.forward));
+            
 
             yield return new WaitForSeconds(missileGenDelay);
         }

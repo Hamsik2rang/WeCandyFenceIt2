@@ -8,7 +8,8 @@ public class jellyGen : MonoBehaviour
     const float START_GEN_POINT = -8f;
     const float END_GEN_POINT = 8f;
     public GameObject jelly;
-
+    
+    
     void Start()
     {
         StartCoroutine("jellyGenCoroutine");
@@ -28,6 +29,7 @@ public class jellyGen : MonoBehaviour
         while (true)
         {
             Instantiate(jelly, new Vector2(UnityEngine.Random.Range(genPosX[0], genPosX[1]), genPosY), Quaternion.identity);
+            
             yield return new WaitForSeconds(genDelay);
             genDelay = genDelay * genDelayTime;
         }

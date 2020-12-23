@@ -5,6 +5,7 @@ using UnityEngine;
 public class jellyMove : MonoBehaviour
 {
     Color[] jellyColor;
+    public int jellyScore=0;
     [SerializeField]
     float fallSpeed = 2f;
     SpriteRenderer jellyRenderer;
@@ -37,5 +38,10 @@ public class jellyMove : MonoBehaviour
     private void OnBecameInvisible()
     {
         Destroy(gameObject);
+    }
+    private void OnDestroy()
+    {
+        //TODO: 젤리 스코어 증가
+
     }
 }

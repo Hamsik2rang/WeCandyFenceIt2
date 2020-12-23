@@ -73,7 +73,6 @@ public class ItemExplosion : MonoBehaviour
         {
             if (targetObject.tag == "Missile")
             {
-                Debug.Log("flare!");
                 Destroy(targetObject);
             }
         }
@@ -81,7 +80,6 @@ public class ItemExplosion : MonoBehaviour
         {
             if (targetObject.tag == "Jelly")
             {
-                Debug.Log("napalm");
                 Destroy(targetObject);
             }
         }

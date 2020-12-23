@@ -12,9 +12,10 @@ public class BombExplosion : MonoBehaviour
     {
         BombExplosionAreaCollider = GetComponent<CircleCollider2D>();
         BombExplosionAreaCollider.enabled=false;
+        BombExplosionRadius = GameObject.Find("Player").GetComponent<PlayerState>().bombRadius;
         BombExplosionAreaCollider.radius = BombExplosionRadius;
         StartCoroutine("BombExplosionCoroutine");
-        Debug.Log("bombset");
+
     }
 
     // Update is called once per frame
@@ -27,15 +28,12 @@ public class BombExplosion : MonoBehaviour
     {
         yield return new WaitForSeconds(BombWaitTime);
         BombExplosionAreaCollider.enabled = true;
-        Debug.Log("bomb");
         //TODO: 애니메이션 추가
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
     void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("input");
-
         if (collision.gameObject.tag == "Jelly")
         {
             Destroy(collision.gameObject);
