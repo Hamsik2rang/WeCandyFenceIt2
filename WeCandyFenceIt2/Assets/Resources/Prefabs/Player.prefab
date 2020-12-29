@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b28d917dcadf64fabae2ae47804fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombRadius: 2
+  bombDelay: 10
   rotateSpeed: 110
   moveSpeed: 5
 --- !u!50 &5899757426244269491
@@ -416,12 +418,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7847341874024157666, guid: e191bb1cd1b70b6418be2f5a0e58f3d2,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 9341b63a881364e709624cfe01039833,
-        type: 3}
     - target: {fileID: 7847341874024157666, guid: e191bb1cd1b70b6418be2f5a0e58f3d2,
         type: 3}
       propertyPath: m_Size.x

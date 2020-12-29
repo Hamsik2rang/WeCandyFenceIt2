@@ -16,9 +16,15 @@ public class PlayerState : MonoBehaviour
     GameObject joyStick;
     GameObject joyStickKnob;
 
+    //모듈 프리팹
+    public GameObject modulePrefab;
+
     //모듈과의 연결을 위한 중간 연결 변수
     public float bombRadius = 2f;
     public float bombDelay = 10f;
+
+    //모듈 공전을 위한 자리 변수
+    public GameObject[] moduleList = { null, null, null };
 
     //움직임 구현 변수들
     private Vector2 originStickPosition;    //moveDirectionStart
@@ -149,5 +155,35 @@ public class PlayerState : MonoBehaviour
         }
 
         return Vector2.SignedAngle(moveDirection, currentDirection);
+    }
+
+    GameObject moduleIns;
+    public void GetModule(int moduleNumber)
+    {
+        for(int i = 0; i < moduleList.Length; i++)
+        {
+            Debug.Log(moduleList[0]);
+            if (moduleList[i] == null)
+            {
+                moduleIns = Instantiate(modulePrefab, Vector3.zero, quaternion.identity);
+                moduleIns.transform.parent = this.transform;
+                moduleIns.transform.localPosition = new Vector3(15, 0, 0);
+                moduleIns.GetComponent<ModuleSkill>().modeInput = moduleNumber;
+                moduleIns.GetComponent<ModuleSkill>().MyAwake();
+                break;
+            }
+        }
+    }
+    public int ModuleCount()
+    {
+        int count = 0;
+        for(int i = 0; i < moduleList.Length; i++)
+        {
+            if (moduleList[i] != null)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 }

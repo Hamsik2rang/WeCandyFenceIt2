@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Jelly
   - Missile
+  - Bullet
   layers:
   - Default
   - TransparentFX

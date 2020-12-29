@@ -7,9 +7,13 @@ public class ModuleSkill : MonoBehaviour
     public GameObject bullet;
     enum moduleMode {interceptorModule=0,bombDelayDown=1, bombAreaUP=2 }
     // Start is called before the first frame update
-    int modeInput = 0;
+    public int modeInput = -1;
     moduleMode mode;
     void Awake()
+    {
+        
+    }
+    public void MyAwake()
     {
         switch (modeInput)
         {
@@ -32,13 +36,12 @@ public class ModuleSkill : MonoBehaviour
             float bombDelay = this.GetComponentInParent<PlayerState>().bombRadius;
             bombDelay = bombDelay * 0.5f;
         }
-        else if(mode == moduleMode.bombAreaUP)
+        else if (mode == moduleMode.bombAreaUP)
         {
             float bombRadius = this.GetComponentInParent<PlayerState>().bombRadius;
             bombRadius = bombRadius * 1.2f;
         }
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -77,7 +80,7 @@ public class ModuleSkill : MonoBehaviour
                 shotVecter = playerVector-missileVector;
 
                 float ang = Vector3.SignedAngle(Vector3.up,shotVecter,Vector3.forward);
-                Debug.Log(ang);
+
                 Instantiate(bullet, this.transform.position, Quaternion.Euler(new Vector3(0,0,180+ang)));
 
 

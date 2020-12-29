@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa38c13462e65c44a4d6b950b2755be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moduleItemPrefab: {fileID: 983621795267705122, guid: c5f1ce9edc435cc4fabc654fb0a50a7b,
+    type: 3}
 --- !u!58 &-8274445161215039580
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -147,6 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2ad34401649c54aa83a18d6a71855a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotateSpeed: 80
+  moveSpeed: 5
 --- !u!1 &4213025901009418060
 GameObject:
   m_ObjectHideFlags: 0
