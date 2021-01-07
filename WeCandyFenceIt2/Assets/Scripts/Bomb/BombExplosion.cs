@@ -7,6 +7,7 @@ public class BombExplosion : MonoBehaviour
     float BombWaitTime = 2f;
     float BombExplosionRadius = 2f;
     CircleCollider2D BombExplosionAreaCollider;
+    jellyMove jellyScript;
     // Start is called before the first frame update
     private void Start()
     {
@@ -15,7 +16,6 @@ public class BombExplosion : MonoBehaviour
         BombExplosionRadius = GameObject.Find("Player").GetComponent<PlayerState>().bombRadius;
         BombExplosionAreaCollider.radius = BombExplosionRadius;
         StartCoroutine("BombExplosionCoroutine");
-
     }
 
     // Update is called once per frame
@@ -32,12 +32,39 @@ public class BombExplosion : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
-    void OnTriggerStay2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Jelly")
         {
-            Destroy(collision.gameObject);
-            //TODO: 스코어 추가
+            jellyScript = collision.gameObject.GetComponent<jellyMove>();
+
+            if (jellyScript.jellyType == 3)
+            {
+                if (jellyScript.kingKongHit == false)
+                {
+                    jellyScript.kingKongHit = true;
+                }
+                else
+                {
+                    Destroy(collision.gameObject);
+                }
+            }
+            else if (jellyScript.jellyType == 4)
+            {
+                if (jellyScript.kingHp > 1)
+                {
+                    jellyScript.kingHp -= 1;
+                }
+                else if (jellyScript.kingHp == 1)
+                {
+                    Destroy(collision.gameObject);
+                }
+            }
+            else
+            {
+                Destroy(collision.gameObject);
+            }
+            
         }
     }
 }

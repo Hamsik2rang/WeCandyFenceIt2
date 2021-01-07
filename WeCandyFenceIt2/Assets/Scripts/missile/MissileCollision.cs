@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MissileCollision : MonoBehaviour
 {
@@ -9,11 +10,13 @@ public class MissileCollision : MonoBehaviour
     public GameObject moduleItemPrefab;
     //0~100
     float moduleDropPersent=50;
+    Text score;
     // Start is called before the first frame update
     void Start()
     {
         missileGenScript = GameObject.Find("Missile Spawner").GetComponent<MissileGenerator>();
         hp = 3;
+        score = GameObject.Find("ScoreValue").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -74,6 +77,7 @@ public class MissileCollision : MonoBehaviour
         missileGenScript.MissileGenController();
         //각각의 미사일이 파괴될때 작동한다.
         //score += 20;
+        score.text = (int.Parse(score.text) + 20).ToString();
     }
     void DropModule()
     {

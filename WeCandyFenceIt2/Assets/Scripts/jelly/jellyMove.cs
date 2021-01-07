@@ -1,14 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class jellyMove : MonoBehaviour
 {
     Color[] jellyColor;
-    public int jellyScore=0;
     [SerializeField]
     float fallSpeed = 2f;
     SpriteRenderer jellyRenderer;
+    public int jellyType;
+
+    Text score;
+    int[] jellyScore = { 1, 5, 10, 30, 50 };
+
+    bool rabbitCoroutineBool = false;
+    public bool kingKongHit = false;
+    public int kingHp = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +40,7 @@ public class jellyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector2(0, -fallSpeed) * Time.deltaTime);
+        jellyLogic();
     }
 
     private void OnBecameInvisible()
@@ -41,7 +49,51 @@ public class jellyMove : MonoBehaviour
     }
     private void OnDestroy()
     {
-        //TODO: 젤리 스코어 증가
-
+        score.text = (int.Parse(score.text) + jellyScore[jellyType]).ToString();
+    }
+    void jellyLogic()
+    {
+        if (jellyType == 0)
+        {
+            transform.Translate(new Vector2(0, -fallSpeed) * Time.deltaTime);
+        }
+        else if (jellyType == 1)
+        {
+            transform.Translate(new Vector2(0, -fallSpeed*2) * Time.deltaTime);
+        }
+        else if (jellyType == 2)
+        {
+            if (rabbitCoroutineBool == false)
+            {
+                //StartCoroutine("rabbitCoroutine");
+            }
+        }
+        else if (jellyType == 3)
+        {
+            if (kingKongHit == true)
+            {
+                transform.Translate(new Vector2(0, -fallSpeed*3) * Time.deltaTime);
+            }
+            else
+            {
+                transform.Translate(new Vector2(0, -fallSpeed) * Time.deltaTime);
+            }
+        }
+        else if (jellyType == 4)
+        {
+            transform.Translate(new Vector2(0, -fallSpeed*0.3f) * Time.deltaTime);
+        }
+    }
+    IEnumerator rabbitCoroutine()
+    {
+        //TODO: 토끼 젤리 구현하기
+        while (true)
+        {
+            transform.Translate(new Vector2(0, 0) * Time.deltaTime);
+            yield return new WaitForSeconds(1);
+            Debug.Log("jump");
+            transform.Translate(new Vector2(0, -fallSpeed * 2) * Time.deltaTime);
+            yield return new WaitForSeconds(1);
+        }
     }
 }
