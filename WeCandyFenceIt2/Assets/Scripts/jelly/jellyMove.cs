@@ -22,7 +22,7 @@ public class jellyMove : MonoBehaviour
     {
         jellyRenderer = GetComponent<SpriteRenderer>();
         jellyRenderer.color = GetRandomColor();
-
+        score = GameObject.Find("ScoreValue").GetComponent<Text>();
     }
 
     Color GetRandomColor()
@@ -48,6 +48,10 @@ public class jellyMove : MonoBehaviour
         Destroy(gameObject);
     }
     private void OnDestroy()
+    {
+        
+    }
+    public void Explosion()
     {
         score.text = (int.Parse(score.text) + jellyScore[jellyType]).ToString();
     }

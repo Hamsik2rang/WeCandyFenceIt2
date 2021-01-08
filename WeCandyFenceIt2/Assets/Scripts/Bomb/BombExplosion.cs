@@ -46,6 +46,7 @@ public class BombExplosion : MonoBehaviour
                 }
                 else
                 {
+                    jellyScript.Explosion();
                     Destroy(collision.gameObject);
                 }
             }
@@ -57,11 +58,13 @@ public class BombExplosion : MonoBehaviour
                 }
                 else if (jellyScript.kingHp == 1)
                 {
+                    jellyScript.Explosion();
                     Destroy(collision.gameObject);
                 }
             }
             else
             {
+                jellyScript.Explosion();
                 Destroy(collision.gameObject);
             }
             

@@ -33,8 +33,8 @@ public class jellyGen : MonoBehaviour
         while (true)
         {
             jellyIns = Instantiate(jelly, new Vector2(UnityEngine.Random.Range(genPosX[0], genPosX[1]), genPosY), Quaternion.identity);
-            //jellyIns.GetComponent<jellyMove>().jellyType = UnityEngine.Random.Range(0, genTypeRange);
-            jellyIns.GetComponent<jellyMove>().jellyType = UnityEngine.Random.Range(4, 4);
+            jellyIns.GetComponent<jellyMove>().jellyType = UnityEngine.Random.Range(0, genTypeRange);
+            //jellyIns.GetComponent<jellyMove>().jellyType = UnityEngine.Random.Range(4, 4);
 
             yield return new WaitForSeconds(genDelay);
             genDelay = genDelay * genDelayTime;

@@ -45,7 +45,6 @@ public class MissileGenerator : MonoBehaviour
         }
     }
 
-    //TODO:스코어 획득 트리거와 연결할것
     public void MissileGenController()
     {
         if (50<=gameScore && gameScore<100)

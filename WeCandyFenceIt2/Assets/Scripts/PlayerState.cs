@@ -11,6 +11,11 @@ public class PlayerState : MonoBehaviour
     const int POSITIVE = -1;
     const int NEGATIVE = 1;
 
+
+    //아이템 폭탄
+    public int napalmBomb = 0;
+    public int timeBomb = 0;
+    public int flareBomb = 0;
     enum Direction { POSITIVE = -1, NONE = 0, NEGATIVE = 1 };
 
     GameObject joyStick;

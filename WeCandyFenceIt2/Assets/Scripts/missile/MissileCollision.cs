@@ -8,8 +8,10 @@ public class MissileCollision : MonoBehaviour
     MissileGenerator missileGenScript;
     int hp;
     public GameObject moduleItemPrefab;
+    public GameObject itemBombPrefab;
     //0~100
     float moduleDropPersent=50;
+    float itemDropPersent = 50;
     Text score;
     // Start is called before the first frame update
     void Start()
@@ -56,6 +58,7 @@ public class MissileCollision : MonoBehaviour
         if (targetObject.tag == "Missile")
         {
             DropModule();
+            DropItem();
             Destroy(targetObject);
             Destroy(this.gameObject);
         }
@@ -66,6 +69,7 @@ public class MissileCollision : MonoBehaviour
             if (hp == 0)
             {
                 DropModule();
+                DropItem();
                 Destroy(this.gameObject);
             }
         }
@@ -73,18 +77,23 @@ public class MissileCollision : MonoBehaviour
     private void OnDestroy()
     {
         
-        //TODO:스코어와 연결
-        missileGenScript.MissileGenController();
-        //각각의 미사일이 파괴될때 작동한다.
+        
         //score += 20;
         score.text = (int.Parse(score.text) + 20).ToString();
+        missileGenScript.MissileGenController();
     }
     void DropModule()
     {
         if (moduleDropPersent > Random.Range(0, 100))
         {
             Instantiate(moduleItemPrefab, this.transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+        }
+    }
+    void DropItem()
+    {
+        if (itemDropPersent > Random.Range(0, 100))
+        {
+            Instantiate(itemBombPrefab, this.transform.position, Quaternion.identity);
         }
     }
 }

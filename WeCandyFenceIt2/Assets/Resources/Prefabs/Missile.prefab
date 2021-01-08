@@ -100,6 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moduleItemPrefab: {fileID: 983621795267705122, guid: c5f1ce9edc435cc4fabc654fb0a50a7b,
     type: 3}
+  itemBombPrefab: {fileID: 6831266868587986335, guid: cbf514d6d4ed5d5409f20f44f84f089a,
+    type: 3}
 --- !u!58 &-8274445161215039580
 CircleCollider2D:
   m_ObjectHideFlags: 0
